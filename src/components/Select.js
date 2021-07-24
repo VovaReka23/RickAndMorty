@@ -7,7 +7,7 @@ import Select from '@material-ui/core/Select';
 const useStyles = makeStyles((theme) => ({
     formControl: {
         margin: theme.spacing(1),
-        minWidth: 120,
+        width: '30ch',
     },
     selectEmpty: {
         marginTop: theme.spacing(2),
@@ -24,7 +24,7 @@ export default function NativeSelects({ items, label }) {
 
     return (
         <div>
-            <FormControl variant="outlined" className={classes.formControl}>
+            <FormControl size="small" variant="outlined" className={classes.formControl}>
                 <InputLabel htmlFor="outlined-age-native-simple">{label}</InputLabel>
                 <Select
                     native

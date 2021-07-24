@@ -6,7 +6,7 @@ const useStyles = makeStyles((theme) => ({
     root: {
         '& > *': {
             margin: theme.spacing(1),
-            width: '25ch',
+            width: '30ch',
         },
     },
 }));
@@ -16,7 +16,7 @@ export default function Input({ label, linkRef }) {
 
     return (
         <form className={classes.root} noValidate autoComplete="off">
-            <TextField ref={linkRef} id="outlined-basic" label={label} variant="outlined" />
+            <TextField ref={linkRef} size="small" id="outlined-basic" label={label} variant="outlined" />
         </form>
     );
 }

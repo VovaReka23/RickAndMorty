@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as watchListActions from './MyWatchList.action'
 import { Input, Button, Table } from '../../components'
+import styles from '../../assets/scss/general.module.scss';
 
 const MyWatchList = (props) => {
     const inputEl = useRef(null);
@@ -26,9 +27,11 @@ const MyWatchList = (props) => {
     return (
         <>
             <h1>My Watch List</h1>
+            <div className={styles.topList}>
+                <Input linkRef={inputEl} label={'Enter Episode'} />
+                <Button onClick={handleClick} label="Add Episode" />
+            </div>
 
-            <Input linkRef={inputEl} label={'Enter Episode'} />
-            <Button onClick={handleClick} label="Add Episode" />
             <Table rows={props.list} columns={props.columns} setCheked={props.checkedEpisode} checked={props.checked} />
         </>
     )
