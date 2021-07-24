@@ -1,0 +1,18 @@
+.MuiListItem-root {
+  border: 1px solid #3f51b5;
+  display: flex;
+  flex-wrap: wrap;
+  cursor: pointer;
+  .card-info {
+    margin-top: 5px;
+    width: 170px;
+    span {
+      font-size: 13px;
+      display: block;
+      padding-bottom: 5px;
+    }
+  }
+}
+.MuiGrid-container {
+  border: 1px solid #3f51b5;
+}
