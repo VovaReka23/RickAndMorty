@@ -5,11 +5,11 @@ import axios from 'axios'
 /**
  * Get character
  */
-const getCaracter = (page) => async dispatch => {
+const getCaracter = (...arg) => async dispatch => {
     dispatch({ type: 'GET_CHARACTER_REQUEST' })
-
+    console.log(...arg)
     try {
-        const response = await axios.get(`https://rickandmortyapi.com/api/character/?page=${page}&name=&status=`)
+        const response = await axios.get(`https://rickandmortyapi.com/api/character/?page=1&name=&status=`)
         dispatch({ type: 'GET_CHARACTER_SUCCESS', payload: response.data })
     }
     catch (err) {

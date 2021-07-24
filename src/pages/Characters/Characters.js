@@ -10,7 +10,7 @@ import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
-import { Pagination, Modal, ModalContent, Filter, Select, Input } from '../../components'
+import { Pagination, Modal, ModalContent, Filter, Select, Input, Button } from '../../components'
 import './characters.scss';
 
 const useStyles = makeStyles((theme) => ({
@@ -51,6 +51,7 @@ function Characters(props) {
                         <Input label={'Species'} />
                         <Select items={props.status} label={'Status'} />
                         <Select items={props.gender} label={'Gender'} />
+                        <Button label="Filter" />
                     </Filter>
                     <Grid container >
                         {props.character.map((item, index) => {

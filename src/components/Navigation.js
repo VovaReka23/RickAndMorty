@@ -15,9 +15,11 @@ const Navigation = ({ value, setValue, tabs }) => {
     const history = useHistory();
     const handleChange = (event, newValue) => {
         setValue(newValue);
+        localStorage.setItem('page', newValue);
     };
     const changeLink = (event, link) => {
         history.push(link)
+        // localStorage.setItem('page', index);
     }
 
     return (

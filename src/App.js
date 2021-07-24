@@ -23,6 +23,13 @@ function App() {
   const classes = useStyles();
   const theme = useTheme();
   const [value, setValue] = React.useState(0);
+
+  React.useEffect(() => {
+    if (localStorage.getItem('page')) {
+      setValue(+localStorage.getItem('page'));
+    }
+  }, [])
+
   const handleChangeIndex = (index) => {
     setValue(index);
   };

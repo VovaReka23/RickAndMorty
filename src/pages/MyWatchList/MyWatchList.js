@@ -22,14 +22,13 @@ const MyWatchList = (props) => {
             props.addEpisode(el)
             inputEl.current.querySelector('input').value = "";
         }
-        console.log(props.checked);
     };
     return (
         <>
             <h1>My Watch List</h1>
 
             <Input linkRef={inputEl} label={'Enter Episode'} />
-            <Button onClick={handleClick} />
+            <Button onClick={handleClick} label="Add Episode" />
             <Table rows={props.list} columns={props.columns} setCheked={props.checkedEpisode} checked={props.checked} />
         </>
     )

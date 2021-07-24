@@ -10,7 +10,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import * as EpisodeActions from './Episodes.action'
-import { Pagination, Filter, Input } from '../../components'
+import { Pagination, Filter, Input, Button } from '../../components'
 
 const StyledTableCell = withStyles((theme) => ({
     head: {
@@ -52,6 +52,7 @@ function EnhancedTable(props) {
         <>
             <Filter>
                 <Input label={'Name'} />
+                <Button label="Filter" />
             </Filter>
             <TableContainer component={Paper}>
                 <Table className={classes.table} aria-label="customized table">

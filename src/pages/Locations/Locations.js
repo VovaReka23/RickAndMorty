@@ -10,7 +10,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import * as LocationsActions from './Locations.action'
-import { Pagination, Filter, Input } from '../../components'
+import { Pagination, Filter, Input, Button } from '../../components'
 
 const StyledTableCell = withStyles((theme) => ({
     head: {
@@ -55,6 +55,7 @@ function Locations(props) {
                 <Input label={'Name'} />
                 <Input label={'Type'} />
                 <Input label={'Dimension'} />
+                <Button label="Filter" />
             </Filter>
             <TableContainer component={Paper}>
                 <Table className={classes.table} aria-label="customized table">

@@ -8,15 +8,16 @@ const useStyles = makeStyles((theme) => ({
             margin: theme.spacing(1),
         },
     },
+
 }));
 
-export default function ContainedButtons({ onClick }) {
+export default function ContainedButtons({ onClick, label }) {
     const classes = useStyles();
 
     return (
         <div className={classes.root}>
-            <Button onClick={onClick} variant="contained" color="primary">
-                Primary
+            <Button onClick={onClick} size="large" variant="contained" color="primary">
+                {label}
             </Button>
         </div>
     );
