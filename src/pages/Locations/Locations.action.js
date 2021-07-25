@@ -4,11 +4,11 @@ import axios from 'axios'
 /**
  * Get Locations
  */
-const getLocations = (filter) => async dispatch => {
+const getLocations = (page, name, type, dimension) => async dispatch => {
     dispatch({ type: 'GET_LOCATIONS_REQUEST' })
 
     try {
-        const response = await axios.get(`${config.url}/location?page=${filter.page}&name=${filter.name}&type=${filter.type}&dimension=${filter.dimension}`)
+        const response = await axios.get(`${config.url}/location?page=${page}&name=${name}&type=${type}&dimension=${dimension}`)
         dispatch({ type: 'GET_LOCATIONS_SUCCESS', payload: response.data })
     }
     catch (err) {

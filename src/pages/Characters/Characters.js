@@ -54,7 +54,7 @@ function Characters(props) {
             page: value
         }));
         setPage(value);
-        props.getCaracter(filter);
+        props.getCaracter(value, filter.species, filter.status, filter.gender);
     };
     // btn filter characters
     const handleClick = () => {
@@ -67,10 +67,10 @@ function Characters(props) {
             status,
             gender
         })
-        props.getCaracter(filter);
+        props.getCaracter(page, species, status, gender);
     };
     React.useEffect(() => {
-        props.getCaracter(filter);
+        props.getCaracter(filter.page, filter.species, filter.status, filter.gender);
     }, [])
     return (
         <div className={classes.root}>

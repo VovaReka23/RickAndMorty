@@ -52,13 +52,13 @@ function Locations(props) {
     const inputDimension = useRef(null);
 
     React.useEffect(() => {
-        props.getLocations(filter);
+        props.getLocations(filter.page, filter.name, filter.type, filter.dimension);
     }, [])
 
     // pagination onChange page
     const handleChange = (event, value) => {
         setPage(value);
-        props.getLocations(filter);
+        props.getLocations(value, filter.name, filter.type, filter.dimension);
     };
 
     // btn filter characters
@@ -72,7 +72,7 @@ function Locations(props) {
             type,
             dimension
         })
-        props.getLocations(filter);
+        props.getLocations(page, name, type, dimension);
     };
 
     return (

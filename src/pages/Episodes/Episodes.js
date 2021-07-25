@@ -47,13 +47,13 @@ function EnhancedTable(props) {
     });
     const inputName = useRef(null);
     React.useEffect(() => {
-        props.getEpisode(filter);
+        props.getEpisode(filter.page, filter.name);
     }, [])
 
     // pagination onChange page
     const handleChange = (event, value) => {
         setPage(value);
-        props.getEpisode(filter);
+        props.getEpisode(value, filter.name);
     };
 
     // btn filter episode
@@ -63,7 +63,7 @@ function EnhancedTable(props) {
             page,
             name
         })
-        props.getEpisode(filter);
+        props.getEpisode(page, name);
     };
     return (
         <>
