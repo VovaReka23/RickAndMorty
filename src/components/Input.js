@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function Input({ label, linkRef }) {
+function Input({ label, linkRef, value }) {
     const classes = useStyles();
 
     return (
@@ -20,3 +20,4 @@ export default function Input({ label, linkRef }) {
         </form>
     );
 }
+export default React.memo(Input)

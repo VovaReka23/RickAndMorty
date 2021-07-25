@@ -9,4 +9,5 @@ const Filter = ({ children }) => {
 
     )
 }
-export default Filter;
+
+export default React.memo(Filter)

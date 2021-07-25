@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
@@ -41,18 +41,31 @@ const useStyles = makeStyles({
 function EnhancedTable(props) {
     const classes = useStyles();
     const [page, setPage] = React.useState(1);
+    const [filter, setFilter] = React.useState({
+        page: 1,
+        name: ''
+    });
+    const inputName = useRef(null);
     React.useEffect(() => {
-        props.getEpisode(page);
+        props.getEpisode(filter);
     }, [])
     const handleChange = (event, value) => {
         setPage(value);
-        props.getEpisode(value);
+        props.getEpisode(filter);
+    };
+    const handleClick = () => {
+        const name = inputName.current.querySelector('input').value;
+        setFilter({
+            page,
+            name
+        })
+        props.getEpisode(filter);
     };
     return (
         <>
             <Filter>
-                <Input label={'Name'} />
-                <Button label="Filter" />
+                <Input linkRef={inputName} label={'Name'} />
+                <Button onClick={handleClick} label="Filter" />
             </Filter>
             <TableContainer component={Paper}>
                 <Table className={classes.table} aria-label="customized table">

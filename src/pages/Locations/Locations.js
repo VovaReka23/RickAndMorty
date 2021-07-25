@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
@@ -41,21 +41,43 @@ const useStyles = makeStyles({
 function Locations(props) {
     const classes = useStyles();
     const [page, setPage] = React.useState(1);
+    const [filter, setFilter] = React.useState({
+        page: 1,
+        name: '',
+        type: '',
+        dimension: ''
+    });
+    const inputName = useRef(null);
+    const inputType = useRef(null);
+    const inputDimension = useRef(null);
+
     React.useEffect(() => {
-        props.getLocations(page);
+        props.getLocations(filter);
     }, [])
     const handleChange = (event, value) => {
         setPage(value);
-        props.getLocations(value);
+        props.getLocations(filter);
+    };
+    const handleClick = () => {
+        const name = inputName.current.querySelector('input').value;
+        const type = inputType.current.querySelector('input').value;
+        const dimension = inputDimension.current.querySelector('input').value;
+        setFilter({
+            page,
+            name,
+            type,
+            dimension
+        })
+        props.getLocations(filter);
     };
 
     return (
         <>
             <Filter>
-                <Input label={'Name'} />
-                <Input label={'Type'} />
-                <Input label={'Dimension'} />
-                <Button label="Filter" />
+                <Input linkRef={inputName} label={'Name'} />
+                <Input linkRef={inputType} label={'Type'} />
+                <Input linkRef={inputDimension} label={'Dimension'} />
+                <Button onClick={handleClick} label="Filter" />
             </Filter>
             <TableContainer component={Paper}>
                 <Table className={classes.table} aria-label="customized table">

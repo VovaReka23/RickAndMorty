@@ -3,11 +3,11 @@ import axios from 'axios'
 /**
  * Get Locations
  */
-const getLocations = (page) => async dispatch => {
+const getLocations = (filter) => async dispatch => {
     dispatch({ type: 'GET_LOCATIONS_REQUEST' })
 
     try {
-        const response = await axios.get(`https://rickandmortyapi.com/api/location?page=${page}`)
+        const response = await axios.get(`https://rickandmortyapi.com/api/location?page=${filter.page}&name=${filter.name}&type=${filter.type}&dimension=${filter.dimension}`)
         dispatch({ type: 'GET_LOCATIONS_SUCCESS', payload: response.data })
     }
     catch (err) {

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { makeStyles } from '@material-ui/core/styles';
@@ -27,7 +27,16 @@ function Characters(props) {
     const classes = useStyles();
     const [page, setPage] = React.useState(1);
     const [open, setOpen] = React.useState(false);
+    const [filter, setFilter] = React.useState({
+        page: 1,
+        species: '',
+        status: '',
+        gender: ''
+    });
     const [modalInfo, setModalInfo] = React.useState({});
+    const inputSpecies = useRef(null);
+    const inputStatus = useRef(null);
+    const inputGender = useRef(null);
 
     const handleOpen = (event, item) => {
         setOpen(true);
@@ -37,21 +46,37 @@ function Characters(props) {
         setOpen(false);
     };
     const handleChange = (event, value) => {
+        setFilter(prevState => ({
+            ...prevState,
+            page: value
+        }));
         setPage(value);
-        props.getCaracter(value);
+        props.getCaracter(filter);
+    };
+    const handleClick = () => {
+        const species = inputSpecies.current.querySelector('input').value;
+        const status = inputStatus.current.querySelector('select').value;
+        const gender = inputGender.current.querySelector('select').value;
+        setFilter({
+            page,
+            species,
+            status,
+            gender
+        })
+        props.getCaracter(filter);
     };
     React.useEffect(() => {
-        props.getCaracter(page);
+        props.getCaracter(filter);
     }, [])
     return (
         <div className={classes.root}>
             {props.loadedCharacter &&
                 <>
                     <Filter>
-                        <Input label={'Species'} />
-                        <Select items={props.status} label={'Status'} />
-                        <Select items={props.gender} label={'Gender'} />
-                        <Button label="Filter" />
+                        <Input linkRef={inputSpecies} value={filter.species} label={'Species'} />
+                        <Select linkRef={inputStatus} items={props.status} label={'Status'} />
+                        <Select linkRef={inputGender} items={props.gender} label={'Gender'} />
+                        <Button onClick={handleClick} label="Filter" />
                     </Filter>
                     <Grid container >
                         {props.character.map((item, index) => {
@@ -110,4 +135,4 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => bindActionCreators({
     ...CharacterActions
 }, dispatch)
-export default connect(mapStateToProps, mapDispatchToProps)(Characters)
+export default connect(mapStateToProps, mapDispatchToProps)(React.memo(Characters))

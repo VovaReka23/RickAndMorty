@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function NativeSelects({ items, label }) {
+export default function NativeSelects({ items, label, linkRef }) {
     const classes = useStyles();
     const [empty, setEmpty] = React.useState(true);
 
@@ -30,6 +30,7 @@ export default function NativeSelects({ items, label }) {
                     native
                     onChange={handleChange}
                     label={label}
+                    ref={linkRef}
                 >
                     {empty && <option value=''></option>}
                     {items.map((item, index) => <option key={index} value={item}>{item}</option>)}

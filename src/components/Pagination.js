@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function BasicPagination({ count, page, handleChange }) {
+function BasicPagination({ count, page, handleChange }) {
     const classes = useStyles();
     return (
         <div className={classes.root}>
@@ -18,3 +18,4 @@ export default function BasicPagination({ count, page, handleChange }) {
         </div>
     );
 }
+export default React.memo(BasicPagination)
