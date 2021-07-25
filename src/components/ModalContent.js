@@ -1,7 +1,8 @@
 import React from 'react'
-import Typography from '@material-ui/core/Typography';
-import Avatar from '@material-ui/core/Avatar';
-import styles from '../assets/scss/modal.module.scss';
+import PropTypes from 'prop-types'
+import Typography from '@material-ui/core/Typography'
+import Avatar from '@material-ui/core/Avatar'
+import styles from '../assets/scss/modal.module.scss'
 
 const ModalContent = ({ modalInfo }) => {
     return (
@@ -54,5 +55,7 @@ const ModalContent = ({ modalInfo }) => {
         </div>
     )
 }
-
+ModalContent.propTypes = {
+    modalInfo: PropTypes.object,
+}
 export default React.memo(ModalContent)

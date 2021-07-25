@@ -1,6 +1,7 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Modal from '@material-ui/core/Modal';
+import PropTypes from 'prop-types'
+import { makeStyles } from '@material-ui/core/styles'
+import Modal from '@material-ui/core/Modal'
 
 function getModalStyle() {
     return {
@@ -19,10 +20,10 @@ const useStyles = makeStyles((theme) => ({
         boxShadow: theme.shadows[5],
         padding: theme.spacing(2, 4, 3),
     },
-}));
+}))
 
 function SimpleModal({ handleClose, open, children }) {
-    const classes = useStyles();
+    const classes = useStyles()
     const [modalStyle] = React.useState(getModalStyle);
     return (
         <div>
@@ -37,6 +38,13 @@ function SimpleModal({ handleClose, open, children }) {
                 </div>
             </Modal>
         </div>
-    );
+    )
 }
+
+SimpleModal.propTypes = {
+    open: PropTypes.bool,
+    handleClose: PropTypes.func,
+    children: PropTypes.object
+}
+
 export default React.memo(SimpleModal)

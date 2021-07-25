@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 import { makeStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
@@ -39,5 +40,9 @@ function NativeSelects({ items, label, linkRef }) {
         </div>
     );
 }
-
+NativeSelects.propTypes = {
+    linkRef: PropTypes.object,
+    label: PropTypes.string,
+    items: PropTypes.array
+}
 export default React.memo(NativeSelects)

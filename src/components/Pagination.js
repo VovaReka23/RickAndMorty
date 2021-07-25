@@ -1,6 +1,7 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Pagination from '@material-ui/lab/Pagination';
+import PropTypes from 'prop-types'
+import { makeStyles } from '@material-ui/core/styles'
+import Pagination from '@material-ui/lab/Pagination'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -16,6 +17,13 @@ function BasicPagination({ count, page, handleChange }) {
         <div className={classes.root}>
             <Pagination count={count} color="primary" page={page} onChange={handleChange} />
         </div>
-    );
+    )
 }
+
+BasicPagination.propTypes = {
+    count: PropTypes.number,
+    page: PropTypes.number,
+    handleChange: PropTypes.func
+}
+
 export default React.memo(BasicPagination);

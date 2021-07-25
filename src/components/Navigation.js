@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { useHistory } from "react-router";
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
@@ -38,5 +39,9 @@ const Navigation = ({ value, setValue, tabs }) => {
         </AppBar>
     )
 }
-
-export default React.memo(Navigation);
+Navigation.propTypes = {
+    value: PropTypes.number,
+    setValue: PropTypes.func,
+    tabs: PropTypes.array
+}
+export default React.memo(Navigation)

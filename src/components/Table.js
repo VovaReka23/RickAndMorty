@@ -1,4 +1,5 @@
 import * as React from 'react';
+import PropTypes from 'prop-types'
 import { DataGrid } from '@material-ui/data-grid';
 
 function DataTable({ rows, columns, setCheked, checked }) {
@@ -8,4 +9,11 @@ function DataTable({ rows, columns, setCheked, checked }) {
         </div>
     );
 }
+
+DataTable.propTypes = {
+    rows: PropTypes.array,
+    columns: PropTypes.array,
+    setCheked: PropTypes.func
+}
+
 export default React.memo(DataTable)
