@@ -54,10 +54,14 @@ function Locations(props) {
     React.useEffect(() => {
         props.getLocations(filter);
     }, [])
+
+    // pagination onChange page
     const handleChange = (event, value) => {
         setPage(value);
         props.getLocations(filter);
     };
+
+    // btn filter characters
     const handleClick = () => {
         const name = inputName.current.querySelector('input').value;
         const type = inputType.current.querySelector('input').value;

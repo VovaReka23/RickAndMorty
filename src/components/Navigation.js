@@ -19,7 +19,6 @@ const Navigation = ({ value, setValue, tabs }) => {
     };
     const changeLink = (event, link) => {
         history.push(link)
-        // localStorage.setItem('page', index);
     }
 
     return (
@@ -40,4 +39,4 @@ const Navigation = ({ value, setValue, tabs }) => {
     )
 }
 
-export default Navigation;
+export default React.memo(Navigation);

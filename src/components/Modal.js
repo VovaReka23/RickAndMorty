@@ -21,8 +21,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-
-export default function SimpleModal({ handleClose, open, children }) {
+function SimpleModal({ handleClose, open, children }) {
     const classes = useStyles();
     const [modalStyle] = React.useState(getModalStyle);
     return (
@@ -40,3 +39,4 @@ export default function SimpleModal({ handleClose, open, children }) {
         </div>
     );
 }
+export default React.memo(SimpleModal)

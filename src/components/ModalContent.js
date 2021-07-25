@@ -55,4 +55,4 @@ const ModalContent = ({ modalInfo }) => {
     )
 }
 
-export default ModalContent;
+export default React.memo(ModalContent)

@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function NativeSelects({ items, label, linkRef }) {
+function NativeSelects({ items, label, linkRef }) {
     const classes = useStyles();
     const [empty, setEmpty] = React.useState(true);
 
@@ -39,3 +39,5 @@ export default function NativeSelects({ items, label, linkRef }) {
         </div>
     );
 }
+
+export default React.memo(NativeSelects)

@@ -1,5 +1,5 @@
 
-// import envConfig from '../../api/base'
+import { config } from '../../api/base'
 import axios from 'axios'
 
 /**
@@ -8,7 +8,7 @@ import axios from 'axios'
 const getCaracter = (filter) => async dispatch => {
     dispatch({ type: 'GET_CHARACTER_REQUEST' })
     try {
-        const response = await axios.get(`https://rickandmortyapi.com/api/character/?page=${filter.page}&species=${filter.species}&status=${filter.status}&gender=${filter.gender}`)
+        const response = await axios.get(`${config.url}/character/?page=${filter.page}&species=${filter.species}&status=${filter.status}&gender=${filter.gender}`)
         dispatch({ type: 'GET_CHARACTER_SUCCESS', payload: response.data })
     }
     catch (err) {

@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 
-export default function ContainedButtons({ onClick, label }) {
+function ContainedButtons({ onClick, label }) {
     const classes = useStyles();
 
     return (
@@ -22,3 +22,4 @@ export default function ContainedButtons({ onClick, label }) {
         </div>
     );
 }
+export default React.memo(ContainedButtons)

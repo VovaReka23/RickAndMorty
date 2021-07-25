@@ -38,13 +38,16 @@ function Characters(props) {
     const inputStatus = useRef(null);
     const inputGender = useRef(null);
 
+    // modal onClick open
     const handleOpen = (event, item) => {
         setOpen(true);
         setModalInfo(item);
     };
+    // modal onClick close
     const handleClose = () => {
         setOpen(false);
     };
+    // pagination onChange page
     const handleChange = (event, value) => {
         setFilter(prevState => ({
             ...prevState,
@@ -53,6 +56,7 @@ function Characters(props) {
         setPage(value);
         props.getCaracter(filter);
     };
+    // btn filter characters
     const handleClick = () => {
         const species = inputSpecies.current.querySelector('input').value;
         const status = inputStatus.current.querySelector('select').value;

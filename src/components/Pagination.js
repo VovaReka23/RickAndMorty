@@ -18,4 +18,4 @@ function BasicPagination({ count, page, handleChange }) {
         </div>
     );
 }
-export default React.memo(BasicPagination)
+export default React.memo(BasicPagination);

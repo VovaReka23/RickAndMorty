@@ -1,3 +1,4 @@
+import { config } from '../../api/base'
 import axios from 'axios'
 
 /**
@@ -7,7 +8,7 @@ const getEpisode = (filter) => async dispatch => {
     dispatch({ type: 'GET_EPISODE_REQUEST' })
 
     try {
-        const response = await axios.get(`https://rickandmortyapi.com/api/episode?page=${filter.page}&name=${filter.name}`)
+        const response = await axios.get(`${config.url}/episode?page=${filter.page}&name=${filter.name}`)
         dispatch({ type: 'GET_EPISODE_SUCCESS', payload: response.data })
     }
     catch (err) {
